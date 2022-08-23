@@ -1,0 +1,32 @@
+body {
+  background-color: #e6e7e8;
+  margin: 0;
+  padding: 0;
+}
+
+.searchSection {
+  background-color: #0059bc;
+  height: 100%;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.searchInput {
+  width: 250px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
+
+.searchBtn {
+  border-radius: 5px;
+  border: none;
+  margin-left: 20px;
+}
