@@ -30,3 +30,40 @@ body {
   border: none;
   margin-left: 20px;
 }
+
+.load-more {
+  display: flex;
+  margin: 5px auto 50px auto;
+}
+
+.gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.gallery__link {
+  width: 200px;
+  background-color: #fff;
+  box-shadow: 0px 5px 10px 5px rgba(169, 176, 255, 0.72);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.gallery-item__img {
+  width: 100%;
+}
+
+.info {
+  margin-left: 10px;
+}
+
+.is-hidden {
+  display: none;
+}
