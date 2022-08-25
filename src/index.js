@@ -39,7 +39,7 @@ function onSearchForm(e) {
         );
       } else {
         markupGallery(data.hits);
-        SimpleLightBox = new SimpleLightbox('.gallery a').refresh();
+        const SimpleLightBox = new SimpleLightbox('.gallery a').refresh();
         Notify.success(`Hooray! We found ${data.totalHits} images.`);
         query = q;
       }
