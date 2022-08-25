@@ -20,6 +20,7 @@ function markupGallery(hits) {
 
 function onSearchForm(e) {
   e.preventDefault();
+  options.params.page = 1;
   loadMore.classList.remove('is-hidden');
   const q = e.currentTarget.searchQuery.value.trim();
   gallery.innerHTML = '';
