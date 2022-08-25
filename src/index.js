@@ -1,7 +1,6 @@
-import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { getPhotos, options } from './modules/fetchAPI';
-import tempGallary from './templates/gallary.hbs';
+import tempGallery from './templates/gallery.hbs';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -13,9 +12,10 @@ searchForm.addEventListener('submit', onSearchForm);
 loadMore.addEventListener('click', onMoreClick);
 
 loadMore.classList.add('is-hidden');
+let query = '';
 
 function markupGallery(hits) {
-  gallery.insertAdjacentHTML('beforeend', tempGallary(hits));
+  gallery.insertAdjacentHTML('beforeend', tempGallery(hits));
 }
 
 function onSearchForm(e) {
@@ -30,7 +30,6 @@ function onSearchForm(e) {
     );
     return;
   }
-  options.params.page = 1;
   getPhotos(q)
     .then(({ data }) => {
       if (data.totalHits === 0) {
@@ -41,6 +40,7 @@ function onSearchForm(e) {
         markupGallery(data.hits);
         SimpleLightBox = new SimpleLightbox('.gallery a').refresh();
         Notify.success(`Hooray! We found ${data.totalHits} images.`);
+        query = q;
       }
     })
     .catch(error => console.log(error))
@@ -49,14 +49,14 @@ function onSearchForm(e) {
     });
 }
 
-function onMoreClick() {
+function onMoreClick(e) {
   options.params.page += 1;
-  getPhotos()
+  getPhotos(query)
     .then(({ data }) => {
-      markupGallery(data.hits) += markupGallery(data.hits)
+      markupGallery(data.hits);
       SimpleLightBox = new SimpleLightbox('.gallery a').refresh();
 
-      const totalPages = Math.ceil(data.totalHits / perPage);
+      const totalPages = Math.ceil(data.totalHits / options.params.per_page);
 
       if (options.params.page > totalPages) {
         loadMore.classList.add('is-hidden');
