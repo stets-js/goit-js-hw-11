@@ -56,7 +56,7 @@ function onMoreClick(e) {
   getPhotos(query)
     .then(({ data }) => {
       markupGallery(data.hits);
-      SimpleLightBox = new SimpleLightbox('.gallery a').refresh();
+      const SimpleLightBox = new SimpleLightbox('.gallery a').refresh();
 
       const totalPages = Math.ceil(data.totalHits / options.params.per_page);
 
