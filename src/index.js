@@ -26,6 +26,7 @@ function onSearchForm(e) {
   gallery.innerHTML = '';
 
   if (q === '') {
+    loadMore.classList.add('is-hidden');
     Notify.failure(
       'The search string cannot be empty. Please specify your search query.'
     );
